@@ -1,16 +1,5 @@
 #!/usr/bin/env bash
 
-read -p "Desea corregir la resolucion en VMWare Workstation? (S/N): " RES
-if [ "$RES" == 'S' ]; then
-    cp /etc/vmware-tools/tools.conf.example /etc/vmware-tools/tools.conf
-    sed -i 's/#enable=true/enable=true/g' "/etc/vmware-tools/tools.conf"
-    systemctl restart vmtoolsd.service
-fi
-
-dnf update -y
-
-systemctl enable sshd
-
 # Validacion del usuario ejecutando el script
 R_USER=`id -u`
 if [ "$R_USER" -ne 0 ];
@@ -18,6 +7,28 @@ then
     echo -e "\nDebe ejecutar este script como root o utilizando sudo.\n"
     exit 1
 fi
+
+read -p "Desea corregir la resolucion en VMWare Workstation? (S/N): " RES
+if [ "$RES" == 'S' ]; 
+then
+    cp /etc/vmware-tools/tools.conf.example /etc/vmware-tools/tools.conf
+    sed -i 's/#enable=true/enable=true/g' "/etc/vmware-tools/tools.conf"
+    systemctl restart vmtoolsd.service
+fi
+
+read -p "Desea establecer el nombre del equipo? (S/N): " HN
+if [ "$HN" == 'S' ]; 
+then
+    read -p "Ingrese el nombre del equipo: " EQUIPO
+    if [ -n "$EQUIPO" ]; 
+    then
+        echo -e "${EQUIPO}" > /etc/hostname
+    fi
+fi
+
+dnf update -y
+
+systemctl enable sshd
 
 # RPMFusion
 dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm -y
