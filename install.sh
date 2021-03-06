@@ -8,6 +8,12 @@ then
     exit 1
 fi
 
+read -p "Desea establecer el password para root? (S/N): " PR
+if [ "$PR" == 'S' ]; 
+then
+    passwd root
+fi
+
 read -p "Desea corregir la resolucion en VMWare Workstation? (S/N): " RES
 if [ "$RES" == 'S' ]; 
 then
