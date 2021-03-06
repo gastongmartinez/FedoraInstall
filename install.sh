@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+read -p "Desea corregir la resolucion en VMWare Workstation? (S/N): " RES
+if [ "$RES" == 'S' ]; then
+    cp /etc/vmware-tools/tools.conf.example /etc/vmware-tools/tools.conf
+    sed -i 's/#enable=true/enable=true/g' "/etc/vmware-tools/tools.conf"
+    systemctl restart vmtoolsd.service
+fi
+
 dnf update -y
 
 systemctl enable sshd
