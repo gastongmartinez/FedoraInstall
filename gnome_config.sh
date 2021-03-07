@@ -107,4 +107,4 @@ echo 'source ~/.local/share/zsh/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshr
 echo 'source /usr/share/autojump/autojump.zsh' >>~/.zshrc
 echo 'source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh' >>~/.zshrc
 echo 'source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >>~/.zshrc
-echo 'exec zsh' >>~/.bashrc
+chsh -s /usr/bin/zsh

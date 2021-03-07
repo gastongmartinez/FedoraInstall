@@ -113,6 +113,7 @@ PAQUETES=(
     'powerline'
     'neovim'
     'emacs'
+    'util-linux-user'
 
     #### Multimedia ####
     'clementine'
