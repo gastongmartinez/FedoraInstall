@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 
 # Validacion del usuario ejecutando el script
-R_USER=`id -u`
+R_USER=$(id -u)
 if [ "$R_USER" -ne 0 ];
 then
     echo -e "\nDebe ejecutar este script como root o utilizando sudo.\n"
     exit 1
 fi
 
-read -p "Desea establecer el password para root? (S/N): " PR
+read -rp "Desea establecer el password para root? (S/N): " PR
 if [ "$PR" == 'S' ]; 
 then
     passwd root
 fi
 
-read -p "Desea corregir la resolucion en VMWare Workstation? (S/N): " RES
+read -rp "Desea corregir la resolucion en VMWare Workstation? (S/N): " RES
 if [ "$RES" == 'S' ]; 
 then
     cp /etc/vmware-tools/tools.conf.example /etc/vmware-tools/tools.conf
@@ -22,13 +22,13 @@ then
     systemctl restart vmtoolsd.service
 fi
 
-read -p "Desea establecer el nombre del equipo? (S/N): " HN
+read -rp "Desea establecer el nombre del equipo? (S/N): " HN
 if [ "$HN" == 'S' ]; 
 then
-    read -p "Ingrese el nombre del equipo: " EQUIPO
+    read -rp "Ingrese el nombre del equipo: " EQUIPO
     if [ -n "$EQUIPO" ]; 
     then
-        echo -e "${EQUIPO}" > /etc/hostname
+        echo -e "$EQUIPO" > /etc/hostname
     fi
 fi
 
@@ -154,7 +154,7 @@ done
 ###############################################################################
 
 ########################## Virtualizacion #####################################
-read -p "Instalar virtualizacion? (S/N): " VIRT
+read -rp "Instalar virtualizacion? (S/N): " VIRT
 if [ "$VIRT" == 'S' ]; then
     VIRTPKGS=(
         'virt-manager'
@@ -171,7 +171,7 @@ fi
 ###############################################################################
 
 ################################ Wallpapers #####################################
-read -p "Instalar Wallpapers? (S/N): " WPP
+read -rp "Instalar Wallpapers? (S/N): " WPP
 if [ "$WPP" == 'S' ]; then
     echo -e "\nInstalando wallpapers..."
     git clone https://github.com/gastongmartinez/wallpapers.git
@@ -180,7 +180,7 @@ fi
 #################################################################################
 
 ################################## Iconos #######################################
-read -p "Instalar iconos? (S/N): " IC
+read -rp "Instalar iconos? (S/N): " IC
 if [ "$IC" == 'S' ]; then
     echo -e "\nInstalando iconos...\n"
     for ICON in ./Iconos/*.xz
@@ -191,7 +191,7 @@ fi
 #################################################################################
 
 ################################ Temas GTK ######################################
-read -p "Instalar temas de escritorio? (S/N): " TM
+read -rp "Instalar temas de escritorio? (S/N): " TM
 if [ "$TM" == 'S' ]; then
     echo -e "\nInstalando temas GTK...\n"
     for TEMA in ./TemasGTK/*.xz
@@ -202,16 +202,16 @@ fi
 #################################################################################
 
 ######################## Extensiones Gnome ######################################
-read -p "Instalar Extensiones Gnome? (S/N): " EXT
+read -rp "Instalar Extensiones Gnome? (S/N): " EXT
 if [ "$EXT" == 'S' ]; then
-    HOMEDIR=`grep "1000" /etc/passwd | awk -F : '{ print $6 }'`
-    USER=`grep "1000" /etc/passwd | awk -F : '{ print $1 }'`
-    PWD=`pwd`
+    HOMEDIR=$(grep "1000" /etc/passwd | awk -F : '{ print $6 }')
+    USER=$(grep "1000" /etc/passwd | awk -F : '{ print $1 }')
+    PWD=$(pwd)
     for ARCHIVO in "$PWD"/Extensiones/*.zip
     do
-        UUID=`unzip -c $ARCHIVO metadata.json | grep uuid | cut -d \" -f4`
-        mkdir -p "$HOMEDIR"/.local/share/gnome-shell/extensions/$UUID
-        unzip -q $ARCHIVO -d "$HOMEDIR"/.local/share/gnome-shell/extensions/$UUID/
+        UUID=$(unzip -c "$ARCHIVO" metadata.json | grep uuid | cut -d \" -f4)
+        mkdir -p "$HOMEDIR"/.local/share/gnome-shell/extensions/"$UUID"
+        unzip -q "$ARCHIVO" -d "$HOMEDIR"/.local/share/gnome-shell/extensions/"$UUID"/
     done
     chown -R "$USER":"$USER" "$HOMEDIR"/.local/
 fi

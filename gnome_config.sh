@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-R_USER=`id -u`
+R_USER=$(id -u)
 if [ "$R_USER" -eq 0 ];
 then
    echo "Este script debe usarse con un usuario regular."
@@ -8,7 +8,7 @@ then
    exit 1
 fi
 
-if [ -z $DISPLAY ];
+if [ -z "$DISPLAY" ];
 then
     echo -e "Debe ejecutarse dentro del entorno grafico.\n"
     echo "Saliendo..."
@@ -90,7 +90,6 @@ dconf write /org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-time
 #cp /usr/share/applications/plank.desktop ~/.config/autostart/    
 
 # Doom Emacs
-cd ~
 if [ -d ~/.emacs.d ]; then
     rm -Rf ~/.emacs.d
 fi
@@ -103,8 +102,10 @@ if [ ! -d ~/.local/share/zsh ]; then
 fi
 touch ~/.zshrc
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.local/share/zsh/powerlevel10k
-echo 'source ~/.local/share/zsh/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
-echo 'source /usr/share/autojump/autojump.zsh' >>~/.zshrc
-echo 'source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh' >>~/.zshrc
-echo 'source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >>~/.zshrc
+{
+    echo 'source ~/.local/share/zsh/powerlevel10k/powerlevel10k.zsh-theme'
+    echo 'source /usr/share/autojump/autojump.zsh'
+    echo 'source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
+    echo 'source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' 
+} >>~/.zshrc
 chsh -s /usr/bin/zsh
