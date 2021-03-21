@@ -143,6 +143,8 @@ PAQUETES=(
     'rust'
     'java-latest-openjdk'
     'code'
+    'nodejs'
+    'npm'
 
     #### WM ####
     'qtile'
