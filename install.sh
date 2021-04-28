@@ -63,8 +63,8 @@ PAQUETES=(
 
     #### Gnome ####
     'gnome-tweaks'
-    'gnome-shell-extension-dash-to-dock'
-    'gnome-shell-extension-pop-shell'
+    # 'gnome-shell-extension-dash-to-dock'
+    # 'gnome-shell-extension-pop-shell'
     'gnome-shell-extension-user-theme'
 
     #### Fuentes ####
@@ -114,6 +114,7 @@ PAQUETES=(
     'neovim'
     'emacs'
     'util-linux-user'
+    'ktouch'
 
     #### Multimedia ####
     'clementine'
@@ -141,7 +142,8 @@ PAQUETES=(
     'filezilla'
     'golang'
     'rust'
-    'java-latest-openjdk'
+    'java-1.8.0-openjdk'
+    #'java-latest-openjdk'
     'code'
     'nodejs'
     'npm'
