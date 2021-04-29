@@ -63,6 +63,7 @@ PAQUETES=(
 
     #### Gnome ####
     'gnome-tweaks'
+    'gnome-extensions-app'
     'gnome-shell-extension-user-theme'
     'file-roller-nautilus'
 

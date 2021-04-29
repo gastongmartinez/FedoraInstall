@@ -17,38 +17,26 @@ fi
 
 ############################################## Extensiones ##################################################################################
 # User themes
-dconf write /org/gnome/shell/enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.  github.com','user-theme@gnome-shell-extensions.gcampax.github.com']"
+dconf write /org/gnome/shell/enabled-extensions "['background-logo@fedorahosted.org', 'user-theme@gnome-shell-extensions.gcampax.github.com']"
 
 # ArcMenu
-dconf write /org/gnome/shell/enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.  github.com','user-theme@gnome-shell-extensions.gcampax.github.com', 'arcmenu@arcmenu.com']"
+dconf write /org/gnome/shell/enabled-extensions "['background-logo@fedorahosted.org', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'arcmenu@arcmenu.com']"
 dconf write /org/gnome/shell/extensions/arcmenu/available-placement "[true, false, false]"
 dconf write /org/gnome/mutter/overlay-key "'Super_L'"
 dconf write /org/gnome/desktop/wm/keybindings/panel-main-menu "['<Alt>F1']"
 dconf write /org/gnome/shell/extensions/arcmenu/pinned-app-list "['Web', '', 'org.gnome.Epiphany.desktop', 'Terminal', '', 'orggnome.Terminal. desktop', 'ArcMenu Settings', 'ArcMenu_ArcMenuIcon', 'gnome-extensions prefs arcmenu@arcmenu.com']"
 dconf write /org/gnome/shell/extensions/arcmenu/menu-hotkey "'Super_L'"
 
-# Dash to Dock
-dconf write /org/gnome/shell/enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.  github.com','user-theme@gnome-shell-extensions.gcampax.github.com', 'arcmenu@arcmenu.com', 'dash-to-dock@micxgx.gmail.com']"
-dconf write /org/gnome/shell/extensions/arcmenu/available-placement "[false, false, true]"
-dconf write /org/gnome/shell/extensions/dash-to-dock/preferred-monitor 0
-dconf write /org/gnome/shell/extensions/dash-to-dock/dock-position "'BOTTOM'"
-dconf write /org/gnome/shell/extensions/dash-to-dock/dock-fixed false
-dconf write /org/gnome/shell/extensions/dash-to-dock/autohide true
-dconf write /org/gnome/shell/extensions/dash-to-dock/show-trash false
-dconf write /org/gnome/shell/extensions/dash-to-dock/show-show-apps-button false
-dconf write /org/gnome/shell/extensions/dash-to-dock/transparency-mode "'DYNAMIC'"
-dconf write /org/gnome/shell/extensions/dash-to-dock/customize-alphas true
-dconf write /org/gnome/shell/extensions/dash-to-dock/min-alpha 0.10
-dconf write /org/gnome/shell/extensions/dash-to-dock/max-alpha 0.60
-dconf write /org/gnome/shell/extensions/dash-to-dock/show-show-apps-button true
-dconf write /org/gnome/shell/extensions/dash-to-dock/show-apps-at-top true
-dconf write /org/gnome/shell/extensions/dash-to-dock/animate-show-apps true
+# Extensions Sync
+dconf write /org/gnome/shell/enabled-extensions "['background-logo@fedorahosted.org', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'arcmenu@arcmenu.com', 'extensions-sync@elhan.io']"
 
-# Drop down Terminal
-dconf write /org/gnome/shell/enabled-extensions "['user-theme@gnome-shell-extensions.gcampax.  github.com','user-theme@gnome-shell-extensions.gcampax.github.com', 'arcmenu@arcmenu.com', 'dash-to-dock@micxgx.gmail.com','drop-down-terminal-x@bigbn.pro']"
-dconf write /pro/bigbn/drop-down-terminal-x/other-shortcut "['F12']"
-dconf write /pro/bigbn/drop-down-terminal-x/enable-tabs true
-dconf write /pro/bigbn/drop-down-terminal-x/use-default-colors true
+# Quake-mode
+dconf write /org/gnome/shell/enabled-extensions "['background-logo@fedorahosted.org', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'arcmenu@arcmenu.com', 'extensions-sync@elhan.io', 'quake-mode@repsac-by.github.com']"
+dconf write /com/github/repsac-by/quake-mode/quake-mode-app "'Alacritty.desktop'"
+dconf write /com/github/repsac-by/quake-mode/quake-mode-hotkey "['F11']"
+
+# Transparent Shell
+dconf write /org/gnome/shell/enabled-extensions "['background-logo@fedorahosted.org', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'arcmenu@arcmenu.com', 'extensions-sync@elhan.io', 'quake-mode@repsac-by.github.com', 'transparent-shell@siroj42.github.io']"
 #############################################################################################################################################
 # Teclado
 #dconf write /org/gnome/desktop/input-sources/sources "[('xkb', 'es+winkeys')]"
@@ -81,13 +69,6 @@ dconf write /org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-timeout 7
 # En 30 minutos con bateria
 dconf write /org/gnome/settings-daemon/plugins/power/sleep-inactive-battery-timeout 1800
 #############################################################################################################################################
-
-
-# Autostart Apps
-#if [ ! -d ~/.config/autostart ]; then
-#    mkdir -p ~/.config/autostart
-#fi
-#cp /usr/share/applications/plank.desktop ~/.config/autostart/    
 
 # Doom Emacs
 if [ -d ~/.emacs.d ]; then
