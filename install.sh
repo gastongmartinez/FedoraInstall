@@ -63,14 +63,8 @@ PAQUETES=(
 
     #### Gnome ####
     'gnome-tweaks'
-    # 'gnome-shell-extension-dash-to-dock'
-    # 'gnome-shell-extension-pop-shell'
     'gnome-shell-extension-user-theme'
-
-    #### Fuentes ####
-    'terminus-fonts'
-    'fontawesome-fonts'
-    'cascadia-code-fonts'
+    'file-roller-nautilus'
 
     #### WEB ####
     'chromium'
@@ -89,6 +83,7 @@ PAQUETES=(
     'autojump'
     'autojump-fish'
     'autojump-zsh'
+    'ShellCheck'
 
     #### Archivos ####
     'mc'
@@ -106,7 +101,6 @@ PAQUETES=(
     'conky'
     'conky-manager'
     'htop'
-    'bashtop'
     'neofetch'
     'lshw'
     'lshw-gui'
@@ -114,7 +108,11 @@ PAQUETES=(
     'neovim'
     'emacs'
     'util-linux-user'
+    'flameshot'
     'ktouch'
+    'fd-find'
+    'fzf'
+    'the_silver_searcher'
 
     #### Multimedia ####
     'clementine'
@@ -149,7 +147,8 @@ PAQUETES=(
     'npm'
 
     #### WM ####
-    'qtile'
+    # 'qtile'
+    'awesome'
 )
  
 for PAQ in "${PAQUETES[@]}"; do
@@ -172,7 +171,29 @@ if [ "$VIRT" == 'S' ]; then
         dnf install "$PAQ" -y
     done
 fi
-###############################################################################
+################################################################################
+
+################################# Fuentes ######################################
+read -rp "Instalar fuentes adicionales? (S/N): " FT
+if [ "$FT" == 'S' ]; then
+    FUENTES=(
+        'terminus-fonts'
+        'fontawesome-fonts'
+        'cascadia-code-fonts'
+        'texlive-roboto'
+        'dejavu-fonts-all'
+        'powerline-fonts'
+        'fira-code-fonts'
+        'cabextract'
+        'xorg-x11-font-utils'
+        'fontconfig'
+    )
+    for F in "${FUENTES[@]}"; do
+        dnf install "$F" -y
+    done
+    rpm -i https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
+fi
+################################################################################
 
 ################################ Wallpapers #####################################
 read -rp "Instalar Wallpapers? (S/N): " WPP
