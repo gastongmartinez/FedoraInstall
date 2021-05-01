@@ -114,6 +114,7 @@ PAQUETES=(
     'fd-find'
     'fzf'
     'the_silver_searcher'
+    'libreoffice-langpack-es'
 
     #### Multimedia ####
     'clementine'
@@ -146,10 +147,6 @@ PAQUETES=(
     'code'
     'nodejs'
     'npm'
-
-    #### WM ####
-    # 'qtile'
-    'awesome'
 )
  
 for PAQ in "${PAQUETES[@]}"; do
@@ -243,4 +240,22 @@ if [ "$EXT" == 'S' ]; then
 fi
 #################################################################################
 
+################################## Awesome ######################################
+read -rp "Instalar AwesomeWM? (S/N): " AW
+if [ "$AW" == 'S' ]; then
+    AWPAQ=(
+        'awesome'
+        'dmenu'
+        'rofi'
+        'nitrogen'
+        'feh'
+        'picom'
+        'lxappearance'
+    )
+    for PAQ in "${AWPAQ[@]}"; do
+        dnf install "$PAQ" -y
+    done
+    sed -i 's/Name=awesome/Name=Awesome/g' "/usr/share/xsessions/awesome.desktop"
+fi
+#################################################################################
 reboot
