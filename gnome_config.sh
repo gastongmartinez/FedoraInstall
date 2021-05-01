@@ -16,12 +16,17 @@ then
 fi
 
 ############################################# Tema WhiteSur #################################################################################
+firefox &
+wait 3
+pkill firefox
+
 git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git
 cd WhiteSur-gtk-theme || return
 ./install.sh -c dark -i fedora -N glassy
 ./tweaks.sh -f
 # sudo ./tweaks.sh -g
-sudo ./tweaks.sh -g -b "/usr/share/backgrounds/wallpapers/Landscapes/landscape 01.jpg"
+cp "/usr/share/backgrounds/wallpapers/Landscapes/landscape 01.jpg" .
+sudo ./tweaks.sh -g -n -b "landscape 01.jpg"
 cd ..
 
 git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git
