@@ -17,16 +17,16 @@ fi
 
 ############################################# Tema WhiteSur #################################################################################
 firefox &
-wait 3
-pkill firefox
+sleep 10
+killall firefox
 
 git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git
 cd WhiteSur-gtk-theme || return
 ./install.sh -c dark -i fedora -N glassy
 ./tweaks.sh -f
 # sudo ./tweaks.sh -g
-cp "/usr/share/backgrounds/wallpapers/Landscapes/landscape 01.jpg" .
-sudo ./tweaks.sh -g -n -b "landscape 01.jpg"
+# cp "/usr/share/backgrounds/wallpapers/Landscapes/landscapes 01.jpg" .
+sudo ./tweaks.sh -g -b "/usr/share/backgrounds/wallpapers/Landscapes/landscapes 01.jpg"
 cd ..
 
 git clone https://github.com/vinceliuice/WhiteSur-icon-theme.git
@@ -73,9 +73,9 @@ dconf write /org/fedorahosted/background-logo-extension/logo-always-visible true
 # Floating Dock
 dconf write /org/gnome/shell/enabled-extensions "['background-logo@fedorahosted.org', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'arcmenu@arcmenu.com', 'quake-mode@repsac-by.github.com', 'transparent-shell@siroj42.github.io', 'floatingDock@sun.wxg@gmail.com']"
 dconf write /org/gnome/shell/extensions/floatingDock/floating-dock-position "[5, 1011]"
-dconf write /org/gnome/shell/extensions/floatingDock/floating-dock-icon-size 24
+dconf write /org/gnome/shell/extensions/floatingDock/floating-dock-icon-size 32
 dconf write /org/gnome/shell/extensions/floatingDock/floating-dock-direction "'right'"
-# Icono
+dconf write /org/gnome/shell/extensions/floatingDock/floating-dock-icon-file "'/usr/share/icons/Bluecurve/32x32/apps/gnome-main-menu.png'"
 
 # Removable Drive
 dconf write /org/gnome/shell/enabled-extensions "['background-logo@fedorahosted.org', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'arcmenu@arcmenu.com', 'quake-mode@repsac-by.github.com', 'transparent-shell@siroj42.github.io', 'floatingDock@sun.wxg@gmail.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com']"
@@ -108,7 +108,7 @@ dconf write /org/gnome/desktop/interface/cursor-theme "'WhiteSur-cursors'"
 dconf write /org/gnome/desktop/interface/icon-theme "'WhiteSur-grey-dark'"
 
 # Wallpaper
-dconf write /org/gnome/desktop/background/picture-uri "'file:///usr/share/backgrounds/wallpapers/Landscapes/landscape%2001.jpg'"
+dconf write /org/gnome/desktop/background/picture-uri "'file:///usr/share/backgrounds/wallpapers/Landscapes/landscapes%2001.jpg'"
 
 # Establecer fuentes
 dconf write /org/gnome/desktop/interface/font-name "'Noto Sans CJK HK 11'"
