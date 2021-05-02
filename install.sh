@@ -41,6 +41,8 @@ su - root <<EOF
         echo -e "vm.swappiness=10\n" >> /etc/sysctl.d/90-sysctl.conf
 EOF
 
+firefox &
+
 # RPMFusion
 dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-"$(rpm -E %fedora)".noarch.rpm -y
 dnf install https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-"$(rpm -E %fedora)".noarch.rpm -y
