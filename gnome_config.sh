@@ -65,8 +65,14 @@ dconf write /org/gnome/shell/enabled-extensions "['background-logo@fedorahosted.
 dconf write /org/fedorahosted/background-logo-extension/logo-always-visible true
 
 # Floating Dock
+RES=$(xdpyinfo | awk '/dimensions/ {print $2}')
 dconf write /org/gnome/shell/enabled-extensions "['background-logo@fedorahosted.org', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'arcmenu@arcmenu.com', 'quake-mode@repsac-by.github.com', 'transparent-shell@siroj42.github.io', 'floatingDock@sun.wxg@gmail.com']"
-dconf write /org/gnome/shell/extensions/floatingDock/floating-dock-position "[5, 1011]"
+if [ "$RES" == "1920x1080" ]; 
+then
+    dconf write /org/gnome/shell/extensions/floatingDock/floating-dock-position "[5, 1010]"
+else
+    dconf write /org/gnome/shell/extensions/floatingDock/floating-dock-position "[5, 700]"
+fi
 dconf write /org/gnome/shell/extensions/floatingDock/floating-dock-icon-size 32
 dconf write /org/gnome/shell/extensions/floatingDock/floating-dock-direction "'right'"
 dconf write /org/gnome/shell/extensions/floatingDock/floating-dock-icon-file "'/usr/share/icons/Bluecurve/32x32/apps/gnome-main-menu.png'"
