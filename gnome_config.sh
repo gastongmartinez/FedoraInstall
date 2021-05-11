@@ -69,9 +69,9 @@ RES=$(xdpyinfo | awk '/dimensions/ {print $2}')
 dconf write /org/gnome/shell/enabled-extensions "['background-logo@fedorahosted.org', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'arcmenu@arcmenu.com', 'quake-mode@repsac-by.github.com', 'transparent-shell@siroj42.github.io', 'floatingDock@sun.wxg@gmail.com']"
 if [ "$RES" == "1920x1080" ]; 
 then
-    dconf write /org/gnome/shell/extensions/floatingDock/floating-dock-position "[5, 1010]"
+    dconf write /org/gnome/shell/extensions/floatingDock/floating-dock-position "[0, 1038]"
 else
-    dconf write /org/gnome/shell/extensions/floatingDock/floating-dock-position "[5, 700]"
+    dconf write /org/gnome/shell/extensions/floatingDock/floating-dock-position "[0, 700]"
 fi
 dconf write /org/gnome/shell/extensions/floatingDock/floating-dock-icon-size 32
 dconf write /org/gnome/shell/extensions/floatingDock/floating-dock-direction "'right'"
@@ -122,7 +122,7 @@ dconf write /org/gnome/desktop/interface/monospace-font-name "'Monospace 10'"
 dconf write /org/gnome/desktop/wm/preferences/titlebar-font "'Noto Sans CJK HK Bold 11'"
 
 # Aplicaciones favoritas
-dconf write /org/gnome/shell/favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Boxes.desktop', 'org.gnome.Evolution.desktop', 'libreoffice-calc.desktop', 'chromium-browser.desktop', 'firefox.desktop', 'brave-browser.desktop', 'org.qbittorrent.qBittorrent.desktop', 'code.desktop', 'codeblocks.desktop', 'Alacritty.desktop', 'clementine.desktop', 'vlc.desktop', 'org.gnome.tweaks.desktop']"
+dconf write /org/gnome/shell/favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Boxes.desktop', 'org.gnome.Evolution.desktop', 'libreoffice-calc.desktop', 'chromium-browser.desktop', 'firefox.desktop', 'brave-browser.desktop', 'org.qbittorrent.qBittorrent.desktop', 'code.desktop', 'emacs.desktop', 'codeblocks.desktop', 'Alacritty.desktop', 'clementine.desktop', 'vlc.desktop', 'org.gnome.tweaks.desktop']"
 
 # Nautilus
 dconf write /org/gnome/nautilus/icon-view/default-zoom-level "'small'"

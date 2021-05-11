@@ -115,6 +115,7 @@ PAQUETES=(
     'fzf'
     'the_silver_searcher'
     'libreoffice-langpack-es'
+    'x2goserver'
 
     #### Multimedia ####
     'clementine'
