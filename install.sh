@@ -116,6 +116,8 @@ PAQUETES=(
     'the_silver_searcher'
     'libreoffice-langpack-es'
     'x2goserver'
+    'plank'
+    'dconf-editor'
 
     #### Multimedia ####
     'clementine'
@@ -129,6 +131,8 @@ PAQUETES=(
     #### Redes ####
     'nmap'
     'wireshark'
+    'firewall-applet'
+    'firewall-config'
 
     #### Diseño ####
     'gimp'
@@ -258,5 +262,12 @@ if [ "$AW" == 'S' ]; then
     done
     sed -i 's/Name=awesome/Name=Awesome/g' "/usr/share/xsessions/awesome.desktop"
 fi
+#################################################################################
+
+############################### GRUB ############################################
+cp /usr/share/grub/unicode.pf2 /boot/efi/EFI/fedora/fonts/unicode.pf2
+git clone https://github.com/vinceliuice/grub2-themes.git
+cd grub2-themes || return
+./install.sh
 #################################################################################
 reboot
